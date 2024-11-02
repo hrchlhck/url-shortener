@@ -1,0 +1,14 @@
+[
+  {
+    "shortcut_url": "nothing",
+    "original_url": "not.thing.com"
+  },
+  {
+    "shortcut_url": "abc",
+    "original_url": "a.b.c"
+  },
+  {
+    "shortcut_url": "ggl",
+    "original_url": "google.com"
+  }
+]
