@@ -113,6 +113,11 @@ pub fn load_entries(filename: &str) -> Vec<Entry> {
     deserialize_entry(&content)
 }
 
+pub fn create_empty_json(filename: &str) {
+    let mut file = fs::File::create(filename).unwrap();
+    file.write_all(b"[]").unwrap();
+}
+
 #[cfg(test)]
 mod test {
     use super::*;
@@ -277,5 +282,14 @@ mod test {
             }
             None => assert!(false)
         };
+    }
+
+    #[test]
+    fn test_create_empty_json() {
+        let filename = "mock/empty.json";
+        create_empty_json(filename);
+        let data = read_file(&filename);
+
+        assert_eq!(data, "[]");
     }
 }
