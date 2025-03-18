@@ -6,7 +6,7 @@ const ENTRY_FILE: &str = "entries.json";
 
 mod entries;
 
-use entries::json::{create_empty_json, entry_exist_file, find_entry, load_entries, save_entry, Entry};
+use entries::json::{create_empty_json, entry_exist_file, find_entry, load_entries, save_entry, serialize_entry, Entry};
 
 #[get("/")]
 fn home() -> String {
@@ -51,9 +51,14 @@ fn register_url(url: &str, short: &str) -> &'static str {
     "OK"
 }
 
+#[get("/list")]
+fn list_urls() -> String {
+    serialize_entry(load_entries(ENTRY_FILE))
+}
+
 #[launch]
 fn rocket() -> _ {
     println!("Creating empty JSON");
     create_empty_json(ENTRY_FILE);
-    rocket::build().mount("/", routes![register_url, home, redirect, path_inexistent])
+    rocket::build().mount("/", routes![register_url, home, redirect, path_inexistent, list_urls])
 }

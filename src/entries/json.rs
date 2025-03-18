@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use serde_json;
 use std::{fs, io::{Read, Write}, process::exit};
 
 #[derive(Deserialize, Serialize, PartialEq, Debug)]
@@ -54,7 +55,7 @@ fn save_file(filename: &str, contents: &String) {
     file.write_all(contents.as_bytes()).unwrap();
 }
 
-fn serialize_entry(entries: Vec<Entry>) -> String {
+pub fn serialize_entry(entries: Vec<Entry>) -> String {
     let x = match serde_json::to_string_pretty(&entries) {
         Ok(v) => v,
         Err(_) => {
