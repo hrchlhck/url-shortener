@@ -3,6 +3,7 @@ use serde_json;
 use std::{fs, io::{Read, Write}, process::exit};
 
 #[derive(Deserialize, Serialize, PartialEq, Debug)]
+#[serde(crate = "rocket::serde")]
 pub struct Entry {
     shortcut_url: String,
     original_url: String,
@@ -50,8 +51,8 @@ fn deserialize_entry(file_content: &String) -> Vec<Entry> {
     json
 }
 
-fn save_file(filename: &str, contents: &String) {
-    let mut file = fs::OpenOptions::new().write(true).open(filename).unwrap();
+pub fn save_file(filename: &str, contents: &String) {
+    let mut file = fs::OpenOptions::new().write(true).append(false).open(filename).unwrap();
     file.write_all(contents.as_bytes()).unwrap();
 }
 
@@ -137,7 +138,6 @@ mod test {
         assert_eq!(res, false);
     }
     
-
     #[test]
     fn test_file_not_exist_save_entry() {
         let filename = "Car1go.toml";
