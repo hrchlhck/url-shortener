@@ -6,6 +6,7 @@ A simple and fast URL shortener, implemented in **Rust**.
 ## Overview
 
 This project is a minimalistic **URL shortener** developed in Rust for learning and demonstration purposes. It provides a basic RESTful API to create, list, and redirect shortened URLs.
+It also uses Redis as storage. It supports aliases with time expiration.
 
 **Important:**
 This project is **strictly for learning and development purposes**. It **must not be used in production environments** and contains known vulnerabilities (such as lack of robust authentication and non-persistent storage) which are planned to be addressed in future work.
