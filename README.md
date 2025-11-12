@@ -17,6 +17,7 @@ This project is **strictly for learning and development purposes**. It **must no
 ### Prerequisites
 Make sure you have **Rust** installed on your machine. You can install it using [rustup](https://rustup.rs/).
 
+
 ### Compilation and Execution
 
 1.  Clone the repository:
@@ -25,7 +26,14 @@ Make sure you have **Rust** installed on your machine. You can install it using 
     cd url-shortener
     ```
 
-2.  Run the application:
+2. Configure the environment variables
+    ```bash
+    REDIS_ADDRESS=localhost
+    API_ADDRESS=localhost
+    API_PORT=8080
+    ```
+
+4.  Run the application:
     ```bash
     cargo run
     ```
@@ -51,7 +59,7 @@ You can use `curl` to test creating a new URL:
 ```bash
 curl -X POST http://127.0.0.1:8080/new \
      -H "Content-Type: application/json" \
-     -d '{"short_url": "abcde", "original_url": "https://github.com/hrchlhck/url-shortener"}'
+     -d '{"short_url": "abcde", "long_url": "https://github.com/hrchlhck/url-shortener", "expiration": 30}'
 ```
 
 ## Future work
@@ -59,9 +67,8 @@ curl -X POST http://127.0.0.1:8080/new \
 The following features are planned for future development:
 - [ ] Enable TLS communication (HTTPS).
 - [ ] Support for OTP authentication.
-- [ ] Database support for URL persistence.
+- [x] Database support for URL persistence.
 - [ ] Development of a user-friendly front-end.
-- [ ] Implementation of unit and integration tests.
 
 ## Contributions
 Contributions are welcome. Feel free to open issues or submit pull requests.
