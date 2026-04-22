@@ -1,6 +1,8 @@
 # Simple URL Shortener 
 A simple and fast URL shortener, implemented in **Rust**.
 
+# THIS REPOSITORY HAS BEEN DISCONTINUED. REFER TO [prhrck](https://prhrck.com/shortener) FOR THE FULL IMPLEMENTATION.
+
 ---
 
 ## Overview
